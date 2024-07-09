@@ -4,12 +4,14 @@
  * @Author: poor-rain
  * @Date: 2024-07-07 19:45:20
  * @LastEditors: sueRimn
- * @LastEditTime: 2024-07-07 19:46:01
+ * @LastEditTime: 2024-07-09 19:31:36
  */
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { authMiddleware } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+export default authMiddleware({
+  ignoredRoutes: ["/api/webhooks/clerk"],
+});
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };
